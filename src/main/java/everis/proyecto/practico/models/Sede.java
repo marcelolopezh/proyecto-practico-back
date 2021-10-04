@@ -11,7 +11,7 @@ import javax.persistence.Table;
 public class Sede {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Long id;
 	private String nombre;
 	private String direccion;
 	
@@ -36,7 +36,7 @@ public class Sede {
 	}
 
 
-	public Sede(Integer id, String nombre, String direccion, String comuna, String region, Integer telefono,
+	public Sede(Long id, String nombre, String direccion, String comuna, String region, Integer telefono,
 			String email) {
 		super();
 		this.id = id;
@@ -49,12 +49,12 @@ public class Sede {
 	}
 
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
