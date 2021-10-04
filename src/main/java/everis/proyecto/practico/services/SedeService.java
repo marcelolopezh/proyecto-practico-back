@@ -16,4 +16,8 @@ public class SedeService {
 	public List<Sede> getSedes() {
 		return sedeRep.findAll();
 	}
+
+	public Sede save(Sede sede) {
+		return sedeRep.save(sede);
+	}
 }
