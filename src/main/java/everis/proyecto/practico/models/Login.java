@@ -17,18 +17,15 @@ public class Login {
 	private Long id;
 	private String correo;
 	private String contrasena; 
-	private String nombre;
 	
 	@OneToOne(mappedBy = "login", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Usuario usuario;
 	
-	public Login(Long id, String correo, String contrasena, String nombre) {
+	public Login(Long id, String correo, String contrasena) {
 		super();
 		this.id = id;
 		this.correo = correo;
 		this.contrasena = contrasena;
-		this.nombre = nombre; 
-		
 		
 	}
 	public Login() {
@@ -53,12 +50,6 @@ public class Login {
 	}
 	public void setContrasena(String contrasena) {
 		this.contrasena = contrasena;
-	}
-	public String getNombre() {
-		return nombre;
-	}
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
 	}
 	public Usuario getUsuario() {
 		return usuario;

@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name="usuarios")
 public class Usuario { 
@@ -15,23 +17,22 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nombre;
-	private String correo;
-	private String contrasena;
+	private String apellido;
 	
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "login_id")
+	@JsonIgnore
 	private Login login;
 	
 	public Usuario() {
 		super();
 	}
 	
-	public Usuario(Long id, String nombre, String correo, String contrasena) {
+	public Usuario(Long id, String nombre, String apellido) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
-		this.correo = correo;
-		this.contrasena = contrasena;
+		this.apellido = apellido;
 	}
 	
 	public Long getId() {
@@ -40,23 +41,12 @@ public class Usuario {
 	public String getNombre() {
 		return nombre;
 	}
-	public String getCorreo() {
-		return correo;
-	}
-	public String getContrasena() {
-		return contrasena;
-	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
-	}
-	public void setCorreo(String correo) {
-		this.correo = correo;
-	}
-	public void setContrasena(String contrasena) {
-		this.contrasena = contrasena;
 	}
 
 	public Login getLogin() {
@@ -65,6 +55,14 @@ public class Usuario {
 
 	public void setLogin(Login login) {
 		this.login = login;
+	}
+
+	public String getApellido() {
+		return apellido;
+	}
+
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
 	}
 	
 }

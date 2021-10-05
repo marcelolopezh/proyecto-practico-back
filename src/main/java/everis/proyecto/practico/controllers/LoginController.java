@@ -1,8 +1,8 @@
 package everis.proyecto.practico.controllers;
 
-import javax.servlet.http.HttpSession;
-
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,19 +22,21 @@ public class LoginController {
 		return null;
 	}
 
-	@RequestMapping("/ingresar") 
-	public String ingresar(@RequestParam("correo") String correo,
-			@RequestParam ("contrasena") String contrasena, 
-			HttpSession session) {
+	@PostMapping("/ingresar") 
+	public Login ingresar(@RequestParam("correo") String correo,
+			@RequestParam ("contrasena") String contrasena) {
 		boolean isLogin=loginService.validarLogin(correo,contrasena);
 		if(isLogin) { 
 			Login login =  loginService.findbyEmail(correo);
-			session.setAttribute("userId", login.getId());
-			return "home";
-			//return login; 
+			return login; 
 		}
-		return "login";
-		
+		return null;
 	}
+	
+	@PostMapping("/a")
+	public void a(@RequestParam("contrasena") String contrasena) {
+		System.out.println(BCrypt.hashpw(contrasena, BCrypt.gensalt()));
+	}
+	
 	
 }
