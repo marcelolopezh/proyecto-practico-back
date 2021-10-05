@@ -34,4 +34,9 @@ public class SedeService {
 		}
 		return null;
 	}
+
+	public void deleteById(Long id) {
+		// TODO Auto-generated method stub
+		sedeRep.deleteById(id);
+	}
 }

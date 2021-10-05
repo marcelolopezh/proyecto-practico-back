@@ -22,7 +22,7 @@ public class Sede {
 	
 	
 	private Integer telefono;
-	private String email;
+	private String correo;
 	
 	
 	/* private String img */;
@@ -37,7 +37,7 @@ public class Sede {
 
 
 	public Sede(Long id, String nombre, String direccion, String comuna, String region, Integer telefono,
-			String email) {
+			String correo) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -45,7 +45,7 @@ public class Sede {
 		this.comuna = comuna;
 		this.region = region;
 		this.telefono = telefono;
-		this.email = email;
+		this.correo = correo;
 	}
 
 
@@ -109,13 +109,13 @@ public class Sede {
 	}
 
 
-	public String getEmail() {
-		return email;
+	public String getCorreo() {
+		return correo;
 	}
 
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setCorreo(String correo) {
+		this.correo = correo;
 	}
 
 	

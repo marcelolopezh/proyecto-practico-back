@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -45,11 +46,18 @@ public class SedeController {
 	}
 	
 	//METODO ACTUALIZAR
-	@RequestMapping(value="/actualizar/{id}", method = RequestMethod.GET)
-	public String actualizar(@PathVariable("id") Long id, Model model) {
-		System.out.println("Actualizar Sede id: "+ id);
-		Sede sede = sedeServ.buscarSede(id);
-		model.addAttribute("Sede", sede);
-		return "editar_sede.jsp";
+	@RequestMapping(value="/actualizar", method = RequestMethod.PUT)
+	public Sede actualizar(@RequestBody Sede sede) {
+		return sedeServ.save(sede);
 	}
+	
+	//METODO ELIMINAR
+	@GetMapping("/eliminar/{id}")
+	public void eliminar(@PathVariable("id") Long id) {
+		sedeServ.deleteById(id);
+	}
+	
+	
+	
+	
 }
