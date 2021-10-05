@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 import everis.proyecto.practico.models.Login;
 import everis.proyecto.practico.models.Sede;
 import everis.proyecto.practico.models.Usuario;
-import everis.proyecto.practico.repositories.RegistroRepository;
 import everis.proyecto.practico.services.UsuarioService;
 
 
