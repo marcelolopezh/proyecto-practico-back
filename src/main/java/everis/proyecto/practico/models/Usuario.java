@@ -1,10 +1,12 @@
 package everis.proyecto.practico.models;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 @Entity
 @Table(name="usuarios")
@@ -15,6 +17,10 @@ public class Usuario {
 	private String nombre;
 	private String correo;
 	private String contrasena;
+	
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "login_id")
+	private Login login;
 	
 	public Usuario() {
 		super();
@@ -53,5 +59,12 @@ public class Usuario {
 		this.contrasena = contrasena;
 	}
 
+	public Login getLogin() {
+		return login;
+	}
+
+	public void setLogin(Login login) {
+		this.login = login;
+	}
 	
 }
