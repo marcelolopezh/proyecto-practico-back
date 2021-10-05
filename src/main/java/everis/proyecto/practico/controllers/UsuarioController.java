@@ -29,36 +29,5 @@ public class UsuarioController {
 	@Autowired
 	UsuarioService usuarioServ;
 	
-	//private RegistroRepository regForm;
-
-	/*
-	@PostMapping("/administrador")
-	public Usuario userRest(@RequestBody Usuario usuarioAdministrador) {
-		usuarioAdministrador = regForm.newReg(usuarioAdministrador);
-		return usuarioAdministrador;
-	}
-
-	@GetMapping("/administrador/{Id}")
-	public Optional<Usuario> getUser(@PathVariable Integer Id) throws Exception {
-		Optional<Usuario> elAdministrador = regForm.findById(Id);
-		if (elAdministrador == null) {
-			throw new Exception("Customer id not found - " + Id);
-		}
-
-		return elAdministrador;
-	}
-
-	@PostMapping("/login")
-	public Usuario login(@Valid @RequestBody Login login) throws Exception {
-		Usuario usuarioAdministrador = regForm.logIn(login);
-		return usuarioAdministrador;
-	}
-	*/
-	
-	@RequestMapping("/getSedes")
-	public List<Usuario> getUsuarios(){
-		return usuarioServ.getUsuarios();
-	}
-	
 
 }
