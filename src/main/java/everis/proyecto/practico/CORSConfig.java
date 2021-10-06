@@ -16,7 +16,7 @@ public class CORSConfig {
         registry
           .addMapping("/**")
           .allowedOrigins(
-        	"http://localhost:4200"
+        	"http://localhost:5555"
           )
           .allowedHeaders("*")
           .allowCredentials(true)
