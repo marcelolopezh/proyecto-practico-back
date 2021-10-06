@@ -17,7 +17,8 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nombre;
-	private String apellido;
+	private String apellido; 
+	
 	
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "login_id")
@@ -33,8 +34,12 @@ public class Usuario {
 		this.id = id;
 		this.nombre = nombre;
 		this.apellido = apellido;
-	}
+		
+	} 
 	
+	
+	
+
 	public Long getId() {
 		return id;
 	}
