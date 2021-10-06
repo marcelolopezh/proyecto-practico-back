@@ -17,21 +17,34 @@ public class Login {
 	private Long id;
 	private String correo;
 	private String contrasena; 
+	private String token;
 	
 	@OneToOne(mappedBy = "login", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Usuario usuario;
 	
-	public Login(Long id, String correo, String contrasena) {
+	public Login(Long id, String correo, String contrasena, String token) {
 		super();
 		this.id = id;
 		this.correo = correo;
 		this.contrasena = contrasena;
+		this.token=token; 
+		
 		
 	}
+	
 	public Login() {
 		super();
 	}
 	
+	
+
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
+	}
 
 	public Long getId() {
 		return id;

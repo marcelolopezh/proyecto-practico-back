@@ -38,7 +38,7 @@ public class LoginController {
 	}
 
 	@GetMapping("/ingresar") 
-	public Map<String, Login> ingresar(@RequestParam("correo") String correo,
+	public Login ingresar(@RequestParam("correo") String correo,
 			@RequestParam ("contrasena") String contrasena) {
 		
 		System.out.println("Entro a ingresar");
@@ -47,9 +47,9 @@ public class LoginController {
 		if(isLogin) { 
 			Login login =  loginService.findbyEmail(correo);
 			String token = getJWTToken(LocalDateTime.now().toString());
-			Map<String, Login> data = new HashMap<>();
-			data.put(token, login);
-			return data; 
+			login.setToken(token);
+			
+			return login; 
 		}
 		return null;
 	}
