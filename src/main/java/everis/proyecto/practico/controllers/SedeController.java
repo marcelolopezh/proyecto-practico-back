@@ -28,8 +28,9 @@ public class SedeController {
 		return "test";
 	}*/
 	
-	@RequestMapping("/getSedes")
+	@GetMapping("/getSedes")
 	public List<Sede> getSedes(){
+		System.out.println("getSedes");
 		return sedeServ.getSedes();
 	}
 	

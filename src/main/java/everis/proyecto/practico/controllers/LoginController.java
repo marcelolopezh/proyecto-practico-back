@@ -12,6 +12,8 @@ import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,6 +24,7 @@ import everis.proyecto.practico.services.LoginService;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class LoginController { 
 	
@@ -34,9 +37,12 @@ public class LoginController {
 		return null;
 	}
 
-	@PostMapping("/ingresar") 
+	@GetMapping("/ingresar") 
 	public Map<String, Login> ingresar(@RequestParam("correo") String correo,
 			@RequestParam ("contrasena") String contrasena) {
+		
+		System.out.println("Entro a ingresar");
+		
 		boolean isLogin=loginService.validarLogin(correo,contrasena);
 		if(isLogin) { 
 			Login login =  loginService.findbyEmail(correo);
@@ -62,7 +68,7 @@ public class LoginController {
 				.claim("authorities",
 						grantedAuthorities.stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList()))
 				.setIssuedAt(new Date(System.currentTimeMillis()))
-				.setExpiration(new Date(System.currentTimeMillis() + 20000)) // 12 horas 43200000
+				.setExpiration(new Date(System.currentTimeMillis() + 43200000)) // 12 horas 43200000
 				.signWith(SignatureAlgorithm.HS512, secretKey.getBytes()).compact();
 
 		return "Bearer " + token;
