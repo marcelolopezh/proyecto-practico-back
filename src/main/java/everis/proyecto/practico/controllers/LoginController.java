@@ -37,7 +37,7 @@ public class LoginController {
 		return null;
 	}
 
-	@PostMapping("/ingresar") 
+	@GetMapping("/ingresar") 
 	public Login ingresar(@RequestParam("correo") String correo,
 			@RequestParam ("contrasena") String contrasena) {
 		
@@ -54,7 +54,7 @@ public class LoginController {
 		return null;
 	}
 	
-	@PostMapping("/a")
+	@GetMapping("/a")
 	public void a(@RequestParam("contrasena") String contrasena) {
 		System.out.println(BCrypt.hashpw(contrasena, BCrypt.gensalt()));
 	}

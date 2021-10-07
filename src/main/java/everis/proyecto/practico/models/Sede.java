@@ -26,7 +26,7 @@ public class Sede {
 	
 	
 	/* private String img */;
-	
+	private String img;
 	
 	
 	
@@ -37,7 +37,7 @@ public class Sede {
 
 
 	public Sede(Long id, String nombre, String direccion, String comuna, String region, Integer telefono,
-			String correo) {
+			String correo, String img) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -46,6 +46,19 @@ public class Sede {
 		this.region = region;
 		this.telefono = telefono;
 		this.correo = correo;
+		this.img=img;
+	}
+
+
+	
+	
+	public String getImg() {
+		return img;
+	}
+
+
+	public void setImg(String img) {
+		this.img = img;
 	}
 
 
