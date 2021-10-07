@@ -30,7 +30,8 @@ public class ProyectoPracticoApplication {
 			http.csrf().disable()
 					.addFilterAfter(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
 					.authorizeRequests().antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-					.antMatchers(HttpMethod.GET, "/ingresar").permitAll()
+					.antMatchers(HttpMethod.POST, "/ingresar").permitAll()
+					.antMatchers(HttpMethod.POST, "/a").permitAll()
 					.anyRequest().authenticated();
 			http.cors().and();
 		}

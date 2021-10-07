@@ -37,7 +37,7 @@ public class LoginController {
 		return null;
 	}
 
-	@GetMapping("/ingresar") 
+	@PostMapping("/ingresar") 
 	public Login ingresar(@RequestParam("correo") String correo,
 			@RequestParam ("contrasena") String contrasena) {
 		
